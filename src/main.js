@@ -2,7 +2,10 @@ export const canvas = document.getElementById('gameCanvas');
 export const ctx = canvas.getContext('2d');
 
 import { BulletManager } from './bullets.js';
+import { ScreenShake, playLaserSound } from './juice.js';
+
 const bulletManager = new BulletManager();
+const screenShake = new ScreenShake();
 
 export const player = {
     x: canvas.width / 2 - 25,
@@ -21,6 +24,8 @@ let canShoot = true;
 window.addEventListener('keydown', (e) => {
     if (e.code === 'Space' && canShoot) {
         bulletManager.shoot(player.x + player.width / 2, player.y);
+        screenShake.trigger(6, 8);
+        playLaserSound();
         canShoot = false;
     }
 });
@@ -43,7 +48,10 @@ function drawPlayer() {
 }
 
 function gameLoop() {
+    ctx.save();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    screenShake.apply();
 
     updatePlayer();
     bulletManager.update();
@@ -51,6 +59,7 @@ function gameLoop() {
     drawPlayer();
     bulletManager.draw();
 
+    ctx.restore();
     requestAnimationFrame(gameLoop);
 }
 
