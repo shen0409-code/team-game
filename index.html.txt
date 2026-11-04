@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D 團隊打擊感小遊戲</title>
+    <style>
+        body {
+            background-color: #121214;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+        }
+        canvas {
+            border: 2px solid #333344;
+            background-color: #1a1a24;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+        .instructions {
+            margin-top: 15px;
+            color: #aaaaaa;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎮 2D 團隊協作遊戲白模</h1>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <div class="instructions">
+        操作說明：鍵盤 <b>A / D</b> 或 <b>← / →</b> 左右移動 | <b>Space</b> 發射子彈
+    </div>
+
+    <!-- 注意 type="module" 才能支援 ES Module 模組化載入 -->
+    <script type="module" src="src/main.js"></script>
+</body>
+</html>
