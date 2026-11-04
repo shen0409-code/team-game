@@ -9,7 +9,7 @@ export const player = {
     width: 50,
     height: 30,
     speed: 6,
-    color: #00f0f0
+    color: '#00f0f0'
 };
 
 // 按鍵監聽
